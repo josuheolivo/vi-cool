@@ -1,13 +1,13 @@
 {
-  "hero_imagen": "/img/uploads/hero-default.jpg",
-  "hero_titulo": "Tapas-Raciones de Temporada",
-  "hero_subtitulo": "Una experiencia culinaria inolvidable en el corazón de Madrid",
+  "horario": "Lun - Dom: 13:00 - 16:00 / 20:00 - 23:30",
+  "telefono_link": "+34914294913",
   "hero_cta": "Reserva tu mesa",
-  "filosofia_titulo": "Respetando el producto de temporada",
-  "filosofia_texto": "Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras \"tapas-raciones\" para disfrutar de una experiencia culinaria inolvidable. Hemos renovado nuestro concepto original ampliando nuestra carta para que puedan disfrutar desde el menú del día a un menú elaborado con una selección de nuestros platos más consolidados.",
   "direccion": "VI COOL TAPAS BAR, C/ Huertas, 12, 28012 Madrid",
   "telefono": "914 294 913",
-  "telefono_link": "+34914294913",
-  "horario": "Lun - Dom: 13:00 - 16:00 / 20:00 - 23:30",
-  "email": "info@vicooltapasbar.es"
+  "hero_subtitulo": "Una experiencia culinaria inolvidable en el corazón de Madrid",
+  "hero_imagen": "/img/uploads/hero-default.jpg",
+  "filosofia_titulo": "Respetando el producto de temporada",
+  "email": "info@vicooltapasbar.es",
+  "hero_titulo": "Más que tapas",
+  "filosofia_texto": "Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras \"tapas-raciones\" para disfrutar de una experiencia culinaria inolvidable. Hemos renovado nuestro concepto original ampliando nuestra carta para que puedan disfrutar desde el menú del día a un menú elaborado con una selección de nuestros platos más consolidados."
 }
