@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Jamón Croquettes",
+    "precio": 8.00,
+    "descripcion": "Homemade Iberian ham croquettes with creamy bechamel. Served as 6 pieces.",
+    "categoria": "tapas-raciones",
+    "alergenos": ["gluten", "lactose", "egg"],
+    "foto": "/img/uploads/croquetas.jpg",
+    "destacado": true,
+    "agotado": false
+  },
+  {
+    "title": "Patatas Bravas",
+    "precio": 6.50,
+    "descripcion": "Diced fried potatoes with our homemade spicy brava sauce and aioli.",
+    "categoria": "tapas-raciones",
+    "alergenos": ["egg"],
+    "foto": "/img/uploads/patatas-bravas.jpg",
+    "destacado": false,
+    "agotado": false
+  },
+  {
+    "title": "Grilled Ibérico Pork",
+    "precio": 14.50,
+    "descripcion": "Grilled ibérico pork secret, served with piquillo peppers and fries.",
+    "categoria": "tapas-raciones",
+    "alergenos": [],
+    "foto": "/img/uploads/secreto-iberico.jpg",
+    "destacado": true,
+    "agotado": false
+  },
+  {
+    "title": "Basque Cheesecake",
+    "precio": 6.00,
+    "descripcion": "La Viña style cheesecake, creamy inside and caramelized on top.",
+    "categoria": "postres",
+    "alergenos": ["gluten", "lactose", "egg"],
+    "foto": "/img/uploads/tarta-queso.jpg",
+    "destacado": false,
+    "agotado": false
+  },
+  {
+    "title": "Rioja Reserva 2018",
+    "precio": 5.50,
+    "description": "Glass of selected Rioja Reserva. Notes of vanilla, red berries and spices.",
+    "categoria": "vinos",
+    "alergenos": [],
+    "foto": "/img/uploads/vino-rioja.jpg",
+    "destacado": false,
+    "agotado": false
+  }
+]

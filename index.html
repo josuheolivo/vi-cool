@@ -9,36 +9,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
     <header class="header" id="header">
         <nav class="nav">
-            <a href="#inicio" class="nav__logo" aria-label="Vi-Cool Tapas Bar - Inicio">
+            <a href="/" class="nav__logo" aria-label="Vi-Cool Tapas Bar - Inicio">
                 <span class="nav__logo-text">VI COOL</span>
                 <span class="nav__logo-sub">Tapas Bar</span>
             </a>
 
             <ul class="nav__menu" id="navMenu" role="menubar">
-                <li role="none"><a href="#reservas" class="nav__link" role="menuitem" data-i18n="nav.reservas">Reservas</a></li>
-                <li role="none"><a href="#menus" class="nav__link" role="menuitem" data-i18n="nav.menus">Menús</a></li>
-                <li role="none"><a href="#galeria" class="nav__link" role="menuitem" data-i18n="nav.galeria">Galería</a></li>
-                <li role="none"><a href="#contacto" class="nav__link" role="menuitem" data-i18n="nav.contacto">Contacto</a></li>
+                <li role="none"><a href="/carta/" class="nav__link" role="menuitem">Carta</a></li>
+                <li role="none"><a href="/#galeria" class="nav__link" role="menuitem">Galería</a></li>
+                <li role="none"><a href="/#eventos" class="nav__link" role="menuitem">Eventos</a></li>
+                <li role="none"><a href="/#contacto" class="nav__link" role="menuitem">Contacto</a></li>
             </ul>
 
             <div class="nav__actions">
-                <div class="lang-selector" id="langSelector">
-                    <button class="lang-selector__btn" id="langBtn" aria-label="Cambiar idioma" aria-expanded="false">
-                        <span id="currentLang">ES</span>
-                        <svg class="lang-selector__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <ul class="lang-selector__dropdown" id="langDropdown" role="listbox">
-                        <li><button class="lang-selector__option" data-lang="es" role="option" aria-selected="true">Español</button></li>
-                        <li><button class="lang-selector__option" data-lang="en" role="option" aria-selected="false">English</button></li>
-                    </ul>
-                </div>
-                <a href="#reservas" class="btn btn--primary btn--sm nav__cta" data-i18n="hero.cta">Reserva tu mesa</a>
+                <button class="lang-selector__btn" id="langBtn" aria-label="Cambiar idioma" onclick="window.ViCoolCMS && window.ViCoolCMS.toggleLang()">
+                    <span id="currentLang">ES</span>
+                    <svg class="lang-selector__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <a href="/#reservas" class="btn btn--primary btn--sm nav__cta">Reserva tu mesa</a>
             </div>
 
             <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -49,18 +46,22 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
+        <!-- ============ HERO SECTION ============ -->
         <section class="hero" id="inicio">
             <div class="hero__media">
                 <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&q=80" alt="Tapas variadas española" class="hero__image" loading="eager">
                 <div class="hero__overlay"></div>
             </div>
             <div class="hero__content">
-                <img src="https://via.placeholder.com/180x80/FFFFFF/8B1A1A?text=VI+COOL" alt="Vi-Cool Logo" class="hero__logo" width="180" height="80">
-                <h1 class="hero__title" data-i18n="hero.title">Tapas-Raciones de Temporada</h1>
-                <p class="hero__subtitle" data-i18n="hero.subtitle">Una experiencia culinaria inolvidable en el corazón de Madrid</p>
-                <a href="#reservas" class="btn btn--primary btn--lg hero__cta" data-i18n="hero.cta">
-                    Reserva tu mesa
+                <div class="hero__logo-text">
+                    <span class="hero__logo-main">VI COOL</span>
+                    <span class="hero__logo-sub">Tapas Bar</span>
+                </div>
+                <h1 class="hero__title">Tapas-Raciones de Temporada</h1>
+                <p class="hero__subtitle">Una experiencia culinaria inolvidable en el corazón de Madrid</p>
+                <a href="/#reservas" class="btn btn--primary btn--lg hero__cta">
+                    <span>Reserva tu mesa</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                         <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -71,129 +72,84 @@
             </div>
         </section>
 
+        <!-- ============ FILOSOFÍA SECTION ============ -->
         <section class="filosofia" id="filosofia">
             <div class="container">
                 <div class="filosofia__content">
-                    <span class="section-tag" data-i18n="filosofia.tag">Nuestra Filosofía</span>
-                    <h2 class="section-title filosofia__title" data-i18n="filosofia.title">Respetando el producto de temporada</h2>
-                    <p class="filosofia__text" data-i18n="filosofia.text">
+                    <span class="section-tag">Nuestra Filosofía</span>
+                    <h2 class="section-title filosofia__title">Respetando el producto de temporada</h2>
+                    <p class="filosofia__text">
                         Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras "tapas-raciones" para disfrutar de una experiencia culinaria inolvidable. Hemos renovado nuestro concepto original ampliando nuestra carta para que puedan disfrutar desde el menú del día a un menú elaborado con una selección de nuestros platos más consolidados.
                     </p>
                 </div>
             </div>
         </section>
 
+        <!-- ============ CARTA / MENÚ SECTION (DINÁMICA) ============ -->
         <section class="menus" id="menus">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag" data-i18n="menus.tag">Nuestra Carta</span>
-                    <h2 class="section-title" data-i18n="menus.title">Menús</h2>
-                    <p class="section-subtitle" data-i18n="menus.subtitle">Descubre todas las opciones que tenemos para ti</p>
+                    <span class="section-tag">Nuestra Carta</span>
+                    <h2 class="section-title">Carta & Menús</h2>
+                    <p class="section-subtitle">Descubre todas las opciones que tenemos para ti</p>
                 </div>
 
-                <div class="menus__tabs" role="tablist">
-                    <button class="menus__tab is-active" data-tab="dia" role="tab" aria-selected="true" data-i18n="menus.tab.dia">Menú del Día</button>
-                    <button class="menus__tab" data-tab="carta" role="tab" aria-selected="false" data-i18n="menus.tab.carta">Carta Completa</button>
-                    <button class="menus__tab" data-tab="eventos" role="tab" aria-selected="false" data-i18n="menus.tab.eventos">Menú Eventos</button>
-                </div>
-
-                <div class="menus__content">
-                    <div class="menus__panel is-active" id="panel-dia" role="tabpanel">
-                        <div class="menus__grid">
-                            <article class="menu-card reveal">
-                                <div class="menu-card__header">
-                                    <h3 class="menu-card__title">Menú del Día</h3>
-                                    <span class="menu-card__price">18,50 €</span>
-                                </div>
-                                <ul class="menu-card__list">
-                                    <li>Primero a elegir: Ensalada César / Sopa del día / Croquetas caseras</li>
-                                    <li>Segundo a elegir: Secreto ibérico / Dorada a la plancha / Risotto de temporada</li>
-                                    <li>Incluye: Bebida, postre y café</li>
-                                </ul>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="menus__panel" id="panel-carta" role="tabpanel">
-                        <div class="menus__grid menus__grid--cols">
-                            <article class="menu-card reveal">
-                                <div class="menu-card__header">
-                                    <h3 class="menu-card__title">Tapas Clásicas</h3>
-                                </div>
-                                <ul class="menu-card__list">
-                                    <li><span>Patatas Bravas</span><span>6,50 €</span></li>
-                                    <li><span>Tortilla Española</span><span>7,00 €</span></li>
-                                    <li><span>Croquetas de Jamón</span><span>8,00 €</span></li>
-                                    <li><span>Calamares a la Romana</span><span>9,50 €</span></li>
-                                </ul>
-                            </article>
-                            <article class="menu-card reveal">
-                                <div class="menu-card__header">
-                                    <h3 class="menu-card__title">Tapas-Raciones</h3>
-                                </div>
-                                <ul class="menu-card__list">
-                                    <li><span>Secreto Ibérico a la Brasa</span><span>14,50 €</span></li>
-                                    <li><span>Pulpo a la Gallega</span><span>16,00 €</span></li>
-                                    <li><span>Carrillera al Vino Tinto</span><span>13,50 €</span></li>
-                                    <li><span>Steak Tartare</span><span>15,00 €</span></li>
-                                </ul>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="menus__panel" id="panel-eventos" role="tabpanel">
-                        <div class="menus__grid">
-                            <article class="menu-card reveal menu-card--feature">
-                                <div class="menu-card__header">
-                                    <h3 class="menu-card__title">Menú para Eventos</h3>
-                                    <span class="menu-card__price">Desde 35 €</span>
-                                </div>
-                                <p class="menu-card__desc">Diseñamos menús personalizados para celebraciones, empresas y eventos privados. Consulta nuestras opciones.</p>
-                                <a href="#contacto" class="btn btn--outline btn--sm" data-i18n="menus.contact">Consultar</a>
-                            </article>
-                        </div>
+                <div id="carta-container" class="carta-container">
+                    <!-- Los platos se cargan dinámicamente desde content/carta/*.json -->
+                    <div class="loading-spinner">
+                        <div class="loading-spinner__icon"></div>
+                        <p>Cargando carta...</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ============ EVENTOS SECTION (DINÁMICA) ============ -->
+        <section class="eventos" id="eventos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Experiencias</span>
+                    <h2 class="section-title">Próximos Eventos</h2>
+                    <p class="section-subtitle">Celebra momentos únicos en Vi-Cool</p>
+                </div>
+
+                <div id="eventos-container" class="eventos__grid">
+                    <!-- Los eventos se cargan dinámicamente desde content/eventos/*.json -->
+                    <div class="loading-spinner">
+                        <div class="loading-spinner__icon"></div>
+                        <p>Cargando eventos...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALERÍA SECTION (DINÁMICA) ============ -->
         <section class="galeria" id="galeria">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag" data-i18n="galeria.tag">El Local</span>
-                    <h2 class="section-title" data-i18n="galeria.title">Galería</h2>
-                    <p class="section-subtitle" data-i18n="galeria.subtitle">Un espacio único en el barrio de Las Huertas</p>
+                    <span class="section-tag">El Local</span>
+                    <h2 class="section-title">Galería</h2>
+                    <p class="section-subtitle">Un espacio único en el barrio de Las Huertas</p>
                 </div>
 
-                <div class="galeria__grid">
-                    <div class="galeria__item galeria__item--lg reveal">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Interior del restaurante Vi-Cool" loading="lazy">
-                    </div>
-                    <div class="galeria__item reveal">
-                        <img src="https://images.unsplash.com/photo-1546039907-7fa05f864c02?w=600&q=80" alt="Tapas preparadas" loading="lazy">
-                    </div>
-                    <div class="galeria__item reveal">
-                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Variedad de tapas" loading="lazy">
-                    </div>
-                    <div class="galeria__item reveal">
-                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80" alt="Plato elaborado" loading="lazy">
-                    </div>
-                    <div class="galeria__item galeria__item--wide reveal">
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=80" alt="Ambiente del local" loading="lazy">
+                <div id="galeria-container" class="galeria__grid">
+                    <!-- Las fotos se cargan dinámicamente desde content/galeria/*.json -->
+                    <div class="loading-spinner">
+                        <div class="loading-spinner__icon"></div>
+                        <p>Cargando galería...</p>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
+        <!-- ============ RESERVAS SECTION ============ -->
         <section class="reservas" id="reservas">
             <div class="container">
                 <div class="reservas__wrapper">
                     <div class="reservas__info">
-                        <span class="section-tag section-tag--light" data-i18n="reservas.tag">Reservas</span>
-                        <h2 class="section-title section-title--light" data-i18n="reservas.title">Reserva tu Mesa</h2>
-                        <p class="reservas__desc" data-i18n="reservas.desc">Asegura tu plaza y déjanos prepararte una experiencia inolvidable. Recomendamos reservar con al menos 24h de antelación.</p>
+                        <span class="section-tag section-tag--light">Reservas</span>
+                        <h2 class="section-title section-title--light">Reserva tu Mesa</h2>
+                        <p class="reservas__desc">Asegura tu plaza y déjanos prepararte una experiencia inolvidable. Recomendamos reservar con al menos 24h de antelación.</p>
                         <a href="tel:+34914294913" class="btn btn--white reservas__phone">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -203,18 +159,18 @@
                     </div>
                     <form class="reservas__form" id="reservasForm" novalidate>
                         <div class="form-group">
-                            <label for="resNombre" class="form-label" data-i18n="form.nombre">Nombre</label>
+                            <label for="resNombre" class="form-label">Nombre</label>
                             <input type="text" id="resNombre" class="form-input" placeholder="Tu nombre" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="resFecha" class="form-label" data-i18n="form.fecha">Fecha</label>
+                                <label for="resFecha" class="form-label">Fecha</label>
                                 <input type="date" id="resFecha" class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <label for="resHora" class="form-label" data-i18n="form.hora">Hora</label>
+                                <label for="resHora" class="form-label">Hora</label>
                                 <select id="resHora" class="form-input" required>
-                                    <option value="" data-i18n="form.horaSelect">Seleccionar</option>
+                                    <option value="">Seleccionar</option>
                                     <option value="13:00">13:00</option>
                                     <option value="14:00">14:00</option>
                                     <option value="15:00">15:00</option>
@@ -225,9 +181,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="resComensales" class="form-label" data-i18n="form.comensales">Comensales</label>
+                            <label for="resComensales" class="form-label">Comensales</label>
                             <select id="resComensales" class="form-input" required>
-                                <option value="" data-i18n="form.comensalesSelect">Seleccionar</option>
+                                <option value="">Seleccionar</option>
                                 <option value="1">1 persona</option>
                                 <option value="2">2 personas</option>
                                 <option value="3">3 personas</option>
@@ -238,21 +194,22 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="resEmail" class="form-label" data-i18n="form.email">Email</label>
+                            <label for="resEmail" class="form-label">Email</label>
                             <input type="email" id="resEmail" class="form-input" placeholder="tu@email.com" required>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--full" data-i18n="form.enviar">Confirmar Reserva</button>
+                        <button type="submit" class="btn btn--primary btn--full">Confirmar Reserva</button>
                     </form>
                 </div>
             </div>
         </section>
 
+        <!-- ============ CONTACTO SECTION ============ -->
         <section class="contacto" id="contacto">
             <div class="container">
                 <div class="contacto__grid">
                     <div class="contacto__info">
-                        <span class="section-tag" data-i18n="contacto.tag">Contacto</span>
-                        <h2 class="section-title" data-i18n="contacto.title">Encuéntranos</h2>
+                        <span class="section-tag">Contacto</span>
+                        <h2 class="section-title">Encuéntranos</h2>
                         <div class="contacto__details">
                             <div class="contacto__item">
                                 <div class="contacto__icon" aria-hidden="true">
@@ -261,8 +218,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="contacto__label" data-i18n="contacto.direccionLabel">Dirección</p>
-                                    <p class="contacto__text">VI COOL TAPAS BAR<br>C/ Huertas, 12<br>28012 Madrid</p>
+                                    <p class="contacto__label">Dirección</p>
+                                    <p class="contacto__text" data-contact="direccion">VI COOL TAPAS BAR<br>C/ Huertas, 12<br>28012 Madrid</p>
                                 </div>
                             </div>
                             <div class="contacto__item">
@@ -272,8 +229,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="contacto__label" data-i18n="contacto.telefonoLabel">Teléfono</p>
-                                    <a href="tel:+34914294913" class="contacto__text contacto__link">914 294 913</a>
+                                    <p class="contacto__label">Teléfono</p>
+                                    <a href="tel:+34914294913" class="contacto__text contacto__link" data-contact="telefono" data-contact-telefono-link="tel:+34914294913">914 294 913</a>
                                 </div>
                             </div>
                             <div class="contacto__item">
@@ -283,8 +240,20 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="contacto__label" data-i18n="contacto.horarioLabel">Horario</p>
-                                    <p class="contacto__text" data-i18n="contacto.horario">Lun - Dom: 13:00 - 16:00 / 20:00 - 23:30</p>
+                                    <p class="contacto__label">Horario</p>
+                                    <p class="contacto__text" data-contact="horario">Lun - Dom: 13:00 - 16:00 / 20:00 - 23:30</p>
+                                </div>
+                            </div>
+                            <div class="contacto__item">
+                                <div class="contacto__icon" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" fill="currentColor"/>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="contacto__label">Email</p>
+                                    <a href="mailto:info@vicooltapasbar.es" class="contacto__text contacto__link" data-contact="email">info@vicooltapasbar.es</a>
                                 </div>
                             </div>
                         </div>
@@ -315,13 +284,14 @@
                     <span class="footer__logo-sub">Tapas Bar</span>
                 </div>
                 <div class="footer__links">
-                    <a href="#menus" class="footer__link" data-i18n="nav.menus">Menús</a>
-                    <a href="#galeria" class="footer__link" data-i18n="nav.galeria">Galería</a>
-                    <a href="#contacto" class="footer__link" data-i18n="nav.contacto">Contacto</a>
+                    <a href="/carta/" class="footer__link">Carta</a>
+                    <a href="/#galeria" class="footer__link">Galería</a>
+                    <a href="/#eventos" class="footer__link">Eventos</a>
+                    <a href="/#contacto" class="footer__link">Contacto</a>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2026 Vi-Cool Tapas Bar. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+                <p>&copy; 2026 Vi-Cool Tapas Bar. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -331,17 +301,40 @@
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                 <path d="M2.75 3.667a1.833 1.833 0 011.833-1.834h2.75a1.833 1.833 0 011.74 1.26l.667 3.334a1.833 1.833 0 01-.962 2.01L7.41 9.104a9.17 9.17 0 004.49 4.49l.667-1.367a1.833 1.833 0 012.01-.962l3.333.667a1.833 1.833 0 011.26 1.74v2.75A1.833 1.833 0 0117.333 18.25h-1.833C8.477 18.25 2.75 12.523 2.75 5.5V3.667z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span data-i18n="mobile.call">Llamar</span>
+            <span>Llamar</span>
         </a>
-        <a href="#reservas" class="mobile-actions__btn mobile-actions__btn--reserve" aria-label="Reservar mesa">
+        <a href="/#reservas" class="mobile-actions__btn mobile-actions__btn--reserve" aria-label="Reservar mesa">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                 <rect x="2.75" y="4.583" width="16.5" height="14.667" rx="2.75" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M2.75 8.25h16.5M7.333 2.75v3.667M14.667 2.75v3.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <span data-i18n="mobile.reserve">Reservar</span>
+            <span>Reservar</span>
         </a>
     </div>
 
+    <script src="js/cms-loader.js"></script>
     <script src="script.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', function(user) {
+                if (!user) {
+                    window.netlifyIdentity.on('login', function() {
+                        document.location.href = '/admin/';
+                    });
+                }
+            });
+        }
+
+        var langBtn = document.getElementById('langBtn');
+        if (langBtn) {
+            langBtn.addEventListener('click', function() {
+                if (window.ViCoolCMS) {
+                    window.ViCoolCMS.toggleLang();
+                    var lang = window.ViCoolCMS.getLang();
+                    document.getElementById('currentLang').textContent = lang.toUpperCase();
+                }
+            });
+        }
+    </script>
 </body>
 </html>

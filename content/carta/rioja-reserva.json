@@ -1,0 +1,10 @@
+{
+  "title": "Rioja Reserva 2018",
+  "precio": 5.50,
+  "descripcion": "Copa de Rioja Reserva de bodegas seleccionadas. Notas de vainilla, frutos rojos y especias.",
+  "categoria": "vinos",
+  "alergenos": [],
+  "foto": "/img/uploads/vino-rioja.jpg",
+  "destacado": false,
+  "agotado": false
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Patatas Bravas",
+  "precio": 6.50,
+  "descripcion": "Diced fried potatoes with our homemade spicy brava sauce and aioli.",
+  "categoria": "tapas-raciones",
+  "alergenos": ["egg"],
+  "foto": "/img/uploads/patatas-bravas.jpg",
+  "destacado": false,
+  "agotado": false
+}

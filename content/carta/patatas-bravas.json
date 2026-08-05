@@ -1,0 +1,10 @@
+{
+  "title": "Patatas Bravas",
+  "precio": 6.50,
+  "descripcion": "Patatas fritas cortadas a dados, con nuestra salsa brava casera de la casa y alioli.",
+  "categoria": "tapas-raciones",
+  "alergenos": ["huevo"],
+  "foto": "/img/uploads/patatas-bravas.jpg",
+  "destacado": false,
+  "agotado": false
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Tarta de Queso",
+  "precio": 6.00,
+  "descripcion": "Tarta de queso estilo La Viña, cremosa por dentro y caramelizada por fuera.",
+  "categoria": "postres",
+  "alergenos": ["gluten", "lactosa", "huevo"],
+  "foto": "/img/uploads/tarta-queso.jpg",
+  "destacado": false,
+  "agotado": false
+}

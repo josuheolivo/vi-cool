@@ -1,0 +1,10 @@
+{
+  "title": "Croquetas de Jamón",
+  "precio": 8.00,
+  "descripcion": "Croquetas caseras de jamón ibérico con bechamel cremosa. Servimos 6 unidades.",
+  "categoria": "tapas-raciones",
+  "alergenos": ["gluten", "lactosa", "huevo"],
+  "foto": "/img/uploads/croquetas.jpg",
+  "destacado": true,
+  "agotado": false
+}

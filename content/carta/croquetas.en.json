@@ -1,0 +1,10 @@
+{
+  "title": "Jamón Croquettes",
+  "precio": 8.00,
+  "descripcion": "Homemade Iberian ham croquettes with creamy bechamel. Served as 6 pieces.",
+  "categoria": "tapas-raciones",
+  "alergenos": ["gluten", "lactose", "egg"],
+  "foto": "/img/uploads/croquetas.jpg",
+  "destacado": true,
+  "agotado": false
+}

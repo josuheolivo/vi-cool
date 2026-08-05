@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Interior del Local",
+    "imagen": "/img/uploads/interior-local.jpg",
+    "categoria": "local"
+  },
+  {
+    "title": "La Barra",
+    "imagen": "/img/uploads/barra.jpg",
+    "categoria": "local"
+  },
+  {
+    "title": "Tapas Variadas",
+    "imagen": "/img/uploads/tapas-variadas.jpg",
+    "categoria": "platos"
+  }
+]

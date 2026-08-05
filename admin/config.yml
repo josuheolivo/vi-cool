@@ -1,34 +1,276 @@
 backend:
   name: git-gateway
-  branch: main # o 'master', según la rama de tu repositorio en GitHub
+  branch: main
+  commit_messages:
+    create: "Crear {{collection}} “{{slug}}”"
+    update: "Actualizar {{collection}} “{{slug}}”"
+    delete: "Eliminar {{collection}} “{{slug}}”"
+    uploadMedia: "Subir “{{path}}”"
+    deleteMedia: "Eliminar “{{path}}”"
 
-media_folder: "img/uploads" # Dónde se guardarán las imágenes subidas
+local_backend: true
+media_folder: "img/uploads"
 public_folder: "/img/uploads"
 
-collections:
-  # Configuración para la página de inicio
-  - name: "pagina_inicio"
-    label: "Página de Inicio"
-    files:
-      - file: "content/inicio.json"
-        label: "Textos de Inicio"
-        name: "inicio"
-        fields:
-          - { label: "Título Principal Hero", name: "hero_titulo", widget: "string" }
-          - { label: "Subtítulo Hero", name: "hero_subtitulo", widget: "string" }
-          - { label: "Texto Filosofía", name: "filosofia_texto", widget: "text" }
-          - { label: "Teléfono de Contacto", name: "telefono", widget: "string" }
-          - { label: "Imagen del Hero", name: "hero_imagen", widget: "image" }
+i18n:
+  structure: multiple_files
+  locales: [es, en]
+  default_locale: es
 
-  # Configuración para añadir y modificar platos dinámicamente
+collections:
+  - name: "inicio"
+    label: "Página de Inicio"
+    label_singular: "Página de Inicio"
+    description: "Contenido de la página principal: Hero, Filosofía y Contacto"
+    files:
+      - name: "inicio"
+        label: "Contenido de Inicio"
+        file: "content/inicio.json"
+        format: "json"
+        i18n: true
+        fields:
+          - label: "Hero - Imagen de Portada"
+            name: "hero_imagen"
+            widget: "image"
+            required: true
+            i18n: true
+            hint: "Imagen principal de la página de inicio (recomendado: 1920x1080px)"
+
+          - label: "Hero - Título"
+            name: "hero_titulo"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "Tapas-Raciones de Temporada"
+
+          - label: "Hero - Subtítulo"
+            name: "hero_subtitulo"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "Una experiencia culinaria inolvidable en el corazón de Madrid"
+
+          - label: "Hero - Texto Botón CTA"
+            name: "hero_cta"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "Reserva tu mesa"
+
+          - label: "Filosofía - Título"
+            name: "filosofia_titulo"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "Respetando el producto de temporada"
+
+          - label: "Filosofía - Texto"
+            name: "filosofia_texto"
+            widget: "text"
+            required: true
+            i18n: true
+            default: "Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras tapas-raciones para disfrutar de una experiencia culinaria inolvidable. Hemos renovado nuestro concepto original ampliando nuestra carta para que puedan disfrutar desde el menú del día a un menú elaborado con una selección de nuestros platos más consolidados."
+
+          - label: "Contacto - Dirección"
+            name: "direccion"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "VI COOL TAPAS BAR, C/ Huertas, 12, 28012 Madrid"
+
+          - label: "Contacto - Teléfono (visual)"
+            name: "telefono"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "914 294 913"
+
+          - label: "Contacto - Teléfono (link)"
+            name: "telefono_link"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "+34914294913"
+            hint: "Solo números y signo +, sin espacios"
+
+          - label: "Contacto - Horario"
+            name: "horario"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "Lun - Dom: 13:00 - 16:00 / 20:00 - 23:30"
+
+          - label: "Contacto - Email"
+            name: "email"
+            widget: "string"
+            required: true
+            i18n: true
+            default: "info@vicooltapasbar.es"
+
   - name: "carta"
-    label: "Platos de la Carta"
+    label: "Carta del Restaurante"
+    label_singular: "Plato"
+    description: "Gestiona los platos de la carta. Puedes crear, editar y eliminar platos."
     folder: "content/carta"
-    create: true # Permite AÑADIR NUEVOS PLATOS
+    create: true
     slug: "{{slug}}"
+    summary: "{{categoria}} - {{title}} ({{precio}}€)"
+    i18n: true
     fields:
-      - { label: "Nombre del Plato", name: "title", widget: "string" }
-      - { label: "Precio (€)", name: "precio", widget: "string" }
-      - { label: "Descripción / Ingredientes", name: "descripcion", widget: "text" }
-      - { label: "Categoría", name: "categoria", widget: "select", options: ["Tapas Raciones", "Menú del Día", "Postres", "Vinos"] }
-      - { label: "Foto del Plato", name: "foto", widget: "image", required: false }
+      - label: "Título del Plato"
+        name: "title"
+        widget: "string"
+        required: true
+        i18n: true
+
+      - label: "Precio (€)"
+        name: "precio"
+        widget: "number"
+        required: true
+        i18n: true
+        value_type: "float"
+        min: 0
+        step: 0.5
+        hint: "Precio en euros (ej: 8.50)"
+
+      - label: "Descripción / Ingredientes"
+        name: "descripcion"
+        widget: "text"
+        required: true
+        i18n: true
+        hint: "Descripción breve del plato o ingredientes principales"
+
+      - label: "Categoría"
+        name: "categoria"
+        widget: "select"
+        required: true
+        i18n: true
+        options:
+          - { label: "Tapas Raciones", value: "tapas-raciones" }
+          - { label: "Menú del Día", value: "menu-dia" }
+          - { label: "Postres", value: "postres" }
+          - { label: "Vinos", value: "vinos" }
+          - { label: "Bebidas", value: "bebidas" }
+        default: "tapas-raciones"
+
+      - label: "Alérgenos"
+        name: "alergenos"
+        widget: "select"
+        required: false
+        i18n: true
+        multiple: true
+        options:
+          - { label: "Gluten", value: "gluten" }
+          - { label: "Lactosa", value: "lactosa" }
+          - { label: "Huevo", value: "huevo" }
+          - { label: "Frutos Secos", value: "frutos-secos" }
+          - { label: "Marisco", value: "marisco" }
+          - { label: "Pescado", value: "pescado" }
+          - { label: "Soja", value: "soja" }
+        hint: "Selecciona los alérgenos presentes (Ctrl/Cmd para múltiple)"
+
+      - label: "Foto del Plato"
+        name: "foto"
+        widget: "image"
+        required: false
+        i18n: true
+        hint: "Foto del plato (recomendado: 600x400px)"
+
+      - label: "¿Plato Destacado?"
+        name: "destacado"
+        widget: "boolean"
+        required: false
+        i18n: true
+        default: false
+        hint: "Marcar para resaltar este plato en la carta"
+
+      - label: "¿Agotado? (ocultar)"
+        name: "agotado"
+        widget: "boolean"
+        required: false
+        i18n: true
+        default: false
+        hint: "Marcar para ocultar temporalmente de la carta"
+
+  - name: "eventos"
+    label: "Eventos"
+    label_singular: "Evento"
+    description: "Gestiona los eventos del restaurante"
+    folder: "content/eventos"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - label: "Título del Evento"
+        name: "title"
+        widget: "string"
+        required: true
+        i18n: true
+
+      - label: "Fecha del Evento"
+        name: "fecha"
+        widget: "datetime"
+        required: true
+        i18n: true
+        date_format: "DD/MM/YYYY"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DDTHH:mm:ss"
+
+      - label: "Ubicación"
+        name: "ubicacion"
+        widget: "string"
+        required: false
+        i18n: true
+        default: "Vi-Cool Tapas Bar, C/ Huertas 12"
+
+      - label: "Descripción"
+        name: "descripcion"
+        widget: "text"
+        required: true
+        i18n: true
+
+      - label: "Imagen del Evento"
+        name: "imagen"
+        widget: "image"
+        required: false
+        i18n: true
+
+      - label: "Enlace de Reserva"
+        name: "enlace_reserva"
+        widget: "string"
+        required: false
+        i18n: true
+        hint: "URL para reservar plaza en este evento"
+
+  - name: "galeria"
+    label: "Galería de Fotos"
+    label_singular: "Foto"
+    description: "Gestiona las fotos de la galería del restaurante"
+    folder: "content/galeria"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - label: "Título"
+        name: "title"
+        widget: "string"
+        required: true
+        i18n: true
+
+      - label: "Fotografía"
+        name: "imagen"
+        widget: "image"
+        required: true
+        i18n: true
+        hint: "Foto para la galería (recomendado: 800x600px)"
+
+      - label: "Categoría"
+        name: "categoria"
+        widget: "select"
+        required: false
+        i18n: true
+        options:
+          - { label: "El Local", value: "local" }
+          - { label: "Platos", value: "platos" }
+          - { label: "Eventos", value: "eventos" }
+        default: "local"

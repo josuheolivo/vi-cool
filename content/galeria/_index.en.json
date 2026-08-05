@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Interior",
+    "imagen": "/img/uploads/interior-local.jpg",
+    "categoria": "local"
+  },
+  {
+    "title": "The Bar",
+    "imagen": "/img/uploads/barra.jpg",
+    "categoria": "local"
+  },
+  {
+    "title": "Tapas Selection",
+    "imagen": "/img/uploads/tapas-variadas.jpg",
+    "categoria": "platos"
+  }
+]
