@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main # o 'master', según la rama de tu repositorio en GitHub
+
+media_folder: "img/uploads" # Dónde se guardarán las imágenes subidas
+public_folder: "/img/uploads"
+
+collections:
+  # Configuración para la página de inicio
+  - name: "pagina_inicio"
+    label: "Página de Inicio"
+    files:
+      - file: "content/inicio.json"
+        label: "Textos de Inicio"
+        name: "inicio"
+        fields:
+          - { label: "Título Principal Hero", name: "hero_titulo", widget: "string" }
+          - { label: "Subtítulo Hero", name: "hero_subtitulo", widget: "string" }
+          - { label: "Texto Filosofía", name: "filosofia_texto", widget: "text" }
+          - { label: "Teléfono de Contacto", name: "telefono", widget: "string" }
+          - { label: "Imagen del Hero", name: "hero_imagen", widget: "image" }
+
+  # Configuración para añadir y modificar platos dinámicamente
+  - name: "carta"
+    label: "Platos de la Carta"
+    folder: "content/carta"
+    create: true # Permite AÑADIR NUEVOS PLATOS
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre del Plato", name: "title", widget: "string" }
+      - { label: "Precio (€)", name: "precio", widget: "string" }
+      - { label: "Descripción / Ingredientes", name: "descripcion", widget: "text" }
+      - { label: "Categoría", name: "categoria", widget: "select", options: ["Tapas Raciones", "Menú del Día", "Postres", "Vinos"] }
+      - { label: "Foto del Plato", name: "foto", widget: "image", required: false }
