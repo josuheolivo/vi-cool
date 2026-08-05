@@ -1,0 +1,227 @@
+/* =============================================
+   DECAP CMS - ESTILOS PERSONALIZADOS
+   Mejoras visuales para el panel de administración
+   ============================================= */
+
+/* Colores corporativos */
+:root {
+    --color-primary: #8B1A1A;
+    --color-primary-light: #FDF2F2;
+    --color-accent: #A16207;
+    --color-success: #16a34a;
+    --color-warning: #f59e0b;
+    --color-bg-dark: #0a0a0a;
+    --color-bg-card: #1a1a1a;
+    --color-border: #2a2a2a;
+    --color-text: #e5e5e5;
+    --color-text-muted: #888;
+}
+
+/* Mejoras en la barra lateral */
+[class*="Sidebar"] {
+    background: var(--color-bg-dark) !important;
+    border-right: 1px solid var(--color-border) !important;
+}
+
+[class*="SidebarNav"] a {
+    border-radius: 6px !important;
+    margin: 2px 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="SidebarNav"] a:hover {
+    background: rgba(139, 26, 26, 0.15) !important;
+    color: #fff !important;
+}
+
+[class*="SidebarNav"] a[class*="active"] {
+    background: rgba(139, 26, 26, 0.2) !important;
+    color: #fff !important;
+    border-left: 3px solid var(--color-primary) !important;
+}
+
+/* Mejoras en las tarjetas de contenido */
+[class*="CollectionCard"] {
+    background: var(--color-bg-card) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="CollectionCard"]:hover {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 4px 20px rgba(139, 26, 26, 0.15) !important;
+    transform: translateY(-2px);
+}
+
+/* Botón principal */
+[class*="ButtonPrimary"],
+[class*="button-primary"],
+button[class*="save"],
+button[class*="publish"] {
+    background: var(--color-primary) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="ButtonPrimary"]:hover {
+    background: #6B1010 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 26, 26, 0.3) !important;
+}
+
+/* Campos de formulario */
+[class*="ControlContainer"] input,
+[class*="ControlContainer"] textarea,
+[class*="ControlContainer"] select {
+    background: #1a1a1a !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="ControlContainer"] input:focus,
+[class*="ControlContainer"] textarea:focus,
+[class*="ControlContainer"] select:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2) !important;
+    outline: none !important;
+}
+
+/* Labels más claros */
+[class*="ControlLabel"] {
+    font-weight: 600 !important;
+    color: var(--color-text) !important;
+    font-size: 0.875rem !important;
+}
+
+/* Hints / Ayudas */
+[class*="FieldHint"] {
+    color: var(--color-text-muted) !important;
+    font-size: 0.75rem !important;
+    font-style: italic;
+    margin-top: 4px !important;
+}
+
+/* Badge de idioma */
+.i18n-badge,
+[class*="i18n"] {
+    background: rgba(139, 26, 26, 0.2) !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    font-size: 0.6875rem !important;
+    padding: 2px 6px !important;
+}
+
+/* Workflow de publicación */
+[class*="Workflow"] {
+    background: var(--color-bg-card) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 10px !important;
+}
+
+[class*="Workflow"] [class*="label"] {
+    color: var(--color-text) !important;
+}
+
+/* Notificaciones */
+[class*="Notification"] {
+    border-radius: 8px !important;
+}
+
+[class*="Notification"][class*="success"] {
+    background: rgba(22, 163, 74, 0.15) !important;
+    border: 1px solid rgba(22, 163, 74, 0.3) !important;
+    color: #4ade80 !important;
+}
+
+/* Imagen preview en campos image */
+[class*="ImageWrapper"],
+[class*="AssetImage"] {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--color-border) !important;
+}
+
+/* Mejora de los toggle/boolean */
+[class*="Toggle"] {
+    border-radius: 999px !important;
+}
+
+[class*="Toggle"][class*="checked"] {
+    background: var(--color-primary) !important;
+}
+
+/* Select múltiple más visual */
+[class*="MultiSelect"] [class*="option"] {
+    border-radius: 6px !important;
+    margin: 2px !important;
+}
+
+[class*="MultiSelect"] [class*="option"][class*="selected"] {
+    background: var(--color-primary) !important;
+}
+
+/* Dashboard / Página de inicio CMS */
+[class*="Dashboard"] {
+    background: var(--color-bg-dark) !important;
+}
+
+/* Títulos */
+[class*="CollectionMain"] h1,
+[class*="CollectionMain"] h2 {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+/* Mensaje de ayuda en colecciones vacías */
+[class*="CollectionMain"] [class*="empty"],
+[class*="emptyState"] {
+    background: var(--color-bg-card) !important;
+    border: 1px dashed var(--color-border) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    text-align: center !important;
+}
+
+[class*="emptyState"] [class*="icon"] {
+    color: var(--color-text-muted) !important;
+    font-size: 2rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* Media library */
+[class*="MediaLibrary"] {
+    background: var(--color-bg-dark) !important;
+}
+
+[class*="MediaLibrary"] [class*="card"] {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--color-border) !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="MediaLibrary"] [class*="card"]:hover {
+    border-color: var(--color-primary) !important;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}

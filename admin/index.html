@@ -3,33 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración - Vi-Cool Tapas Bar</title>
+    <title>Panel de Administración - Vi-Cool Tapas Bar</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="preview-templates/custom.css">
     <style>
-        body { font-family: system-ui, sans-serif; margin: 0; padding: 2rem; background: #1a1a1a; color: #fff; text-align: center; }
-        .loading { display: flex; align-items: center; justify-content: center; min-height: 100vh; flex-direction: column; gap: 1rem; }
-        .loading__spinner { width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.2); border-top-color: #8B1A1A; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Karla', system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Pantalla de carga / login */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .login-card {
+            text-align: center;
+            max-width: 440px;
+            width: 100%;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+        }
+        .login-card__logo {
+            font-family: 'Playfair Display SC', Georgia, serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #fff;
+            margin-bottom: 0.375rem;
+        }
+        .login-card__subtitle {
+            font-size: 0.6875rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2.5rem;
+        }
+        .login-card__icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #8B1A1A 0%, #6B1010 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .login-card__spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #8B1A1A;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.25rem;
+        }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .loading__text { font-size: 0.875rem; color: rgba(255,255,255,0.6); }
+        .login-card__text {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+        .login-card__help {
+            margin-top: 2rem;
+            padding: 1rem 1.25rem;
+            background: rgba(139, 26, 26, 0.08);
+            border: 1px solid rgba(139, 26, 26, 0.2);
+            border-radius: 10px;
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+            text-align: left;
+        }
+        .login-card__help strong {
+            color: rgba(255,255,255,0.8);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Netlify Identity widget customization */
+        [data-netlify-identity-menu] {
+            font-family: 'Karla', system-ui, sans-serif !important;
+        }
+
+        [data-netlify-identity-button] {
+            background: #8B1A1A !important;
+            border-radius: 8px !important;
+            font-family: 'Karla', system-ui, sans-serif !important;
+            font-weight: 600 !important;
+            padding: 0.625rem 1.25rem !important;
+            transition: all 0.2s ease !important;
+        }
+
+        [data-netlify-identity-button]:hover {
+            background: #6B1010 !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 26, 26, 0.3) !important;
+        }
     </style>
 </head>
 <body>
-    <div class="loading" id="loading">
-        <div class="loading__spinner"></div>
-        <p class="loading__text">Cargando panel de administración...</p>
+    <!-- Pantalla de Login -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-card__logo">VI COOL</div>
+            <div class="login-card__subtitle">Panel de Administración</div>
+            <div class="login-card__icon">🍽️</div>
+            <div class="login-card__spinner" id="spinner"></div>
+            <p class="login-card__text" id="loadingText">Cargando panel de administración...</p>
+            <div class="login-card__help" id="helpText" style="display:none;">
+                <strong>¿Es tu primera vez aquí?</strong>
+                Pide al administrador del sitio que te envíe una invitación por email. Recibirás un enlace para crear tu contraseña y acceder al panel.
+            </div>
+        </div>
     </div>
 
+    <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- Preview Templates -->
+    <script src="preview-templates/inicio-preview.js"></script>
+    <script src="preview-templates/plato-preview.js"></script>
+    <script src="preview-templates/evento-preview.js"></script>
+
+    <!-- Identity Handler -->
     <script>
-        if (window.netlifyIdentity) {
+        (function() {
+            if (!window.netlifyIdentity) return;
+
+            var spinner = document.getElementById('spinner');
+            var loadingText = document.getElementById('loadingText');
+            var helpText = document.getElementById('helpText');
+
             window.netlifyIdentity.on('init', function(user) {
                 if (!user) {
-                    window.netlifyIdentity.on('login', function() {
-                        document.location.href = '/admin/';
-                    });
+                    spinner.style.display = 'none';
+                    loadingText.textContent = 'Inicia sesión para continuar';
+                    helpText.style.display = 'block';
+                } else {
+                    loadingText.textContent = '¡Hola, ' + (user.user_metadata.full_name || user.email.split('@')[0]) + '!';
                 }
             });
-        }
+
+            window.netlifyIdentity.on('login', function() {
+                window.location.reload();
+            });
+
+            window.netlifyIdentity.on('logout', function() {
+                window.location.reload();
+            });
+        })();
+    </script>
+
+    <!-- Register Dashboard Widget -->
+    <script>
+        var VicoolDashboard = createClass({
+            render: function() {
+                return h('div', {
+                    style: {
+                        fontFamily: "'Karla', system-ui, sans-serif",
+                        maxWidth: '700px',
+                        margin: '0 auto'
+                    }
+                }, [
+                    // Header
+                    h('div', {
+                        style: {
+                            background: 'linear-gradient(135deg, #8B1A1A 0%, #6B1010 100%)',
+                            borderRadius: '16px',
+                            padding: '2rem',
+                            marginBottom: '1.5rem',
+                            textAlign: 'center'
+                        }
+                    }, [
+                        h('div', {
+                            style: {
+                                fontFamily: "'Playfair Display SC', Georgia, serif",
+                                fontSize: '1.75rem',
+                                fontWeight: '700',
+                                letterSpacing: '0.08em',
+                                color: '#fff',
+                                marginBottom: '0.5rem'
+                            }
+                        }, 'VI COOL'),
+                        h('h1', {
+                            style: {
+                                fontFamily: "'Playfair Display', Georgia, serif",
+                                fontSize: '1.25rem',
+                                fontWeight: '400',
+                                color: 'rgba(255,255,255,0.9)',
+                                margin: 0
+                            }
+                        }, 'Panel de Administración')
+                    ]),
+
+                    // Quick guide
+                    h('div', {
+                        style: {
+                            background: '#111',
+                            border: '1px solid #222',
+                            borderRadius: '12px',
+                            padding: '1.5rem',
+                            marginBottom: '1.5rem'
+                        }
+                    }, [
+                        h('h2', {
+                            style: {
+                                fontSize: '1rem',
+                                fontWeight: '700',
+                                color: '#fff',
+                                margin: '0 0 1rem'
+                            }
+                        }, '📋 Guía Rápida'),
+                        h('div', {
+                            style: {
+                                display: 'grid',
+                                gap: '0.75rem'
+                            }
+                        }, [
+                            h('div', {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    gap: '0.75rem',
+                                    fontSize: '0.875rem',
+                                    color: 'rgba(255,255,255,0.7)',
+                                    lineHeight: '1.5'
+                                }
+                            }, [
+                                h('span', { style: { fontSize: '1.125rem', flexShrink: 0 } }, '🏠'),
+                                h('span', {}, [
+                                    h('strong', { style: { color: '#fff' } }, 'Página de Inicio: '),
+                                    'Edita la imagen principal, el título y los datos de contacto.'
+                                ])
+                            ]),
+                            h('div', {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    gap: '0.75rem',
+                                    fontSize: '0.875rem',
+                                    color: 'rgba(255,255,255,0.7)',
+                                    lineHeight: '1.5'
+                                }
+                            }, [
+                                h('span', { style: { fontSize: '1.125rem', flexShrink: 0 } }, '🍽️'),
+                                h('span', {}, [
+                                    h('strong', { style: { color: '#fff' } }, 'Carta: '),
+                                    'Añade, edita o elimina platos. Solo rellena el formulario y publica.'
+                                ])
+                            ]),
+                            h('div', {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    gap: '0.75rem',
+                                    fontSize: '0.875rem',
+                                    color: 'rgba(255,255,255,0.7)',
+                                    lineHeight: '1.5'
+                                }
+                            }, [
+                                h('span', { style: { fontSize: '1.125rem', flexShrink: 0 } }, '🎉'),
+                                h('span', {}, [
+                                    h('strong', { style: { color: '#fff' } }, 'Eventos: '),
+                                    'Crea eventos especiales. Solo se muestran los eventos futuros.'
+                                ])
+                            ]),
+                            h('div', {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    gap: '0.75rem',
+                                    fontSize: '0.875rem',
+                                    color: 'rgba(255,255,255,0.7)',
+                                    lineHeight: '1.5'
+                                }
+                            }, [
+                                h('span', { style: { fontSize: '1.125rem', flexShrink: 0 } }, '📸'),
+                                h('span', {}, [
+                                    h('strong', { style: { color: '#fff' } }, 'Galería: '),
+                                    'Sube fotos del local. Se ordenan por fecha de subida.'
+                                ])
+                            ])
+                        ])
+                    ]),
+
+                    // Tips
+                    h('div', {
+                        style: {
+                            background: 'rgba(139, 26, 26, 0.08)',
+                            border: '1px solid rgba(139, 26, 26, 0.2)',
+                            borderRadius: '12px',
+                            padding: '1.25rem'
+                        }
+                    }, [
+                        h('h3', {
+                            style: {
+                                fontSize: '0.875rem',
+                                fontWeight: '600',
+                                color: '#fff',
+                                margin: '0 0 0.75rem'
+                            }
+                        }, '💡 Consejos'),
+                        h('ul', {
+                            style: {
+                                margin: 0,
+                                paddingLeft: '1.25rem',
+                                fontSize: '0.8125rem',
+                                color: 'rgba(255,255,255,0.6)',
+                                lineHeight: '1.8'
+                            }
+                        }, [
+                            h('li', {}, 'Después de editar, haz clic en "Publicar" para que los cambios se vean en la web.'),
+                            h('li', {}, 'Los cambios tardan unos 30-60 segundos en aparecer.'),
+                            h('li', {}, 'Si un plato está agotado, márcalo como "Agotado" en vez de borrarlo.'),
+                            h('li', {}, 'Las imágenes se suben automáticamente al servidor. Tamaño máximo: 5MB.'),
+                            h('li', {}, 'Puedes previsualizar cómo quedará cada sección usando las pestañas de previsualización.')
+                        ])
+                    ])
+                ]);
+            }
+        });
+
+        CMS.registerDashboardWidget('vicoolDashboard', VicoolDashboard, {
+            w: 12,
+            h: 8
+        });
     </script>
 </body>
 </html>
