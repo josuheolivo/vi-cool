@@ -70,10 +70,13 @@
        ======================================== */
 
     function loadInicio() {
-        var file = CONFIG.contentBase + '/inicio' + (currentLang === 'en' ? '.en' : '') + '.json';
+        var file = CONFIG.contentBase + '/inicio.json';
 
         return fetchJSON(file)
-            .then(function (data) {
+            .then(function (allData) {
+                var data = allData[currentLang] || allData['es'] || {};
+                if (!data || Object.keys(data).length === 0) return;
+
                 setAttr('.hero__image', 'src', data.hero_imagen);
                 setText('.hero__title', data.hero_titulo);
                 setText('.hero__subtitle', data.hero_subtitulo);

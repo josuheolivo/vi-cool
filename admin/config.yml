@@ -26,8 +26,10 @@ collections:
   - name: "inicio"
     label: "Pagina de Inicio"
     label_singular: "Inicio"
-    i18n: true
     description: "Edita la imagen principal, textos y datos de contacto de la pagina de inicio."
+    i18n:
+      structure: single_file
+      locales: [es, en]
     files:
       - name: "inicio"
         label: "Contenido de Inicio"
