@@ -1,8 +1,8 @@
 [
   {
-    "title": "Croquetas de Jamón",
+    "title": "Croquetas de Jamon",
     "precio": 8.00,
-    "descripcion": "Croquetas caseras de jamón ibérico con bechamel cremosa. Servimos 6 unidades.",
+    "descripcion": "Croquetas caseras de jamon iberico con bechamel cremosa. Servimos 6 unidades.",
     "categoria": "tapas-raciones",
     "alergenos": ["gluten", "lactosa", "huevo"],
     "foto": "/img/uploads/croquetas.jpg",
@@ -20,9 +20,9 @@
     "agotado": false
   },
   {
-    "title": "Secreto Ibérico a la Brasa",
+    "title": "Secreto Iberico a la Brasa",
     "precio": 14.50,
-    "descripcion": "Secreto ibérico cocinado a la brasa, acompañado de pimientos del piquillo y patatas fritas.",
+    "descripcion": "Secreto iberico cocinado a la brasa, acompanado de pimientos del piquillo y patatas fritas.",
     "categoria": "tapas-raciones",
     "alergenos": [],
     "foto": "/img/uploads/secreto-iberico.jpg",
@@ -32,7 +32,7 @@
   {
     "title": "Tarta de Queso",
     "precio": 6.00,
-    "descripcion": "Tarta de queso estilo La Viña, cremosa por dentro y caramelizada por fuera.",
+    "descripcion": "Tarta de queso estilo La Vina, cremosa por dentro y caramelizada por fuera.",
     "categoria": "postres",
     "alergenos": ["gluten", "lactosa", "huevo"],
     "foto": "/img/uploads/tarta-queso.jpg",

@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Croquetas de Jamon",
+    "orden": 0,
+    "imagen": "/img/uploads/croquetas.jpg"
+  },
+  {
+    "title": "Patatas Bravas",
+    "orden": 1,
+    "imagen": "/img/uploads/patatas-bravas.jpg"
+  },
+  {
+    "title": "Secreto Iberico",
+    "orden": 2,
+    "imagen": "/img/uploads/secreto-iberico.jpg"
+  },
+  {
+    "title": "Tarta de Queso",
+    "orden": 3,
+    "imagen": "/img/uploads/tarta-queso.jpg"
+  },
+  {
+    "title": "Vino Rioja",
+    "orden": 4,
+    "imagen": "/img/uploads/vino-rioja.jpg"
+  },
+  {
+    "title": "Menu del Dia",
+    "orden": 5,
+    "imagen": "/img/uploads/menu-dia.jpg"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Cata de Vinos Octubre 2026",
+    "orden": 0,
+    "imagen": "/img/uploads/cata-vinos.jpg"
+  },
+  {
+    "title": "Cena de Nochevieja",
+    "orden": 1,
+    "imagen": "/img/uploads/nochevieja.jpg"
+  }
+]

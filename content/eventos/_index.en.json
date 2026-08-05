@@ -5,7 +5,7 @@
     "ubicacion": "Vi-Cool Tapas Bar, Private Room",
     "descripcion": "Guided tasting by our sommelier with 6 D.O. Rioja wines paired with tapas.",
     "imagen": "/img/uploads/cata-vinos.jpg",
-    "enlace_reserva": "/en/reservas?evento=cata-rioja-oct2026"
+    "enlace_reserva": "/reservas"
   },
   {
     "title": "New Year's Eve Dinner 2026",
@@ -13,6 +13,6 @@
     "ubicacion": "Vi-Cool Tapas Bar",
     "descripcion": "Special NYE dinner with tasting menu, lucky grapes and party favors.",
     "imagen": "/img/uploads/nochevieja.jpg",
-    "enlace_reserva": "/en/reservas?evento=nochevieja2026"
+    "enlace_reserva": "/reservas"
   }
 ]
