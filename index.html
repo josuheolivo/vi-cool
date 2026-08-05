@@ -22,20 +22,20 @@
             </a>
 
             <ul class="nav__menu" id="navMenu" role="menubar">
-                <li role="none"><a href="/carta/" class="nav__link" role="menuitem">Carta</a></li>
-                <li role="none"><a href="/#galeria" class="nav__link" role="menuitem">Galería</a></li>
-                <li role="none"><a href="/#eventos" class="nav__link" role="menuitem">Eventos</a></li>
-                <li role="none"><a href="/#contacto" class="nav__link" role="menuitem">Contacto</a></li>
+                <li role="none"><a href="#menus" class="nav__link" role="menuitem">Carta</a></li>
+                <li role="none"><a href="#galeria" class="nav__link" role="menuitem">Galería</a></li>
+                <li role="none"><a href="#eventos" class="nav__link" role="menuitem">Eventos</a></li>
+                <li role="none"><a href="#contacto" class="nav__link" role="menuitem">Contacto</a></li>
             </ul>
 
             <div class="nav__actions">
-                <button class="lang-selector__btn" id="langBtn" aria-label="Cambiar idioma" onclick="window.ViCoolCMS && window.ViCoolCMS.toggleLang()">
+                <button class="lang-selector__btn" id="langBtn" aria-label="Cambiar idioma">
                     <span id="currentLang">ES</span>
                     <svg class="lang-selector__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                         <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <a href="/#reservas" class="btn btn--primary btn--sm nav__cta">Reserva tu mesa</a>
+                <a href="#reservas" class="btn btn--primary btn--sm nav__cta">Reserva tu mesa</a>
             </div>
 
             <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -314,10 +314,10 @@
                     <span class="footer__logo-sub">Tapas Bar</span>
                 </div>
                 <div class="footer__links">
-                    <a href="/carta/" class="footer__link">Carta</a>
-                    <a href="/#galeria" class="footer__link">Galería</a>
-                    <a href="/#eventos" class="footer__link">Eventos</a>
-                    <a href="/#contacto" class="footer__link">Contacto</a>
+                    <a href="#menus" class="footer__link">Carta</a>
+                    <a href="#galeria" class="footer__link">Galería</a>
+                    <a href="#eventos" class="footer__link">Eventos</a>
+                    <a href="#contacto" class="footer__link">Contacto</a>
                 </div>
             </div>
             <div class="footer__bottom">
@@ -333,7 +333,7 @@
             </svg>
             <span>Llamar</span>
         </a>
-        <a href="/#reservas" class="mobile-actions__btn mobile-actions__btn--reserve" aria-label="Reservar mesa">
+        <a href="#reservas" class="mobile-actions__btn mobile-actions__btn--reserve" aria-label="Reservar mesa">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                 <rect x="2.75" y="4.583" width="16.5" height="14.667" rx="2.75" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M2.75 8.25h16.5M7.333 2.75v3.667M14.667 2.75v3.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -345,26 +345,29 @@
     <script src="js/cms-loader.js"></script>
     <script src="script.js"></script>
     <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on('init', function(user) {
-                if (!user) {
-                    window.netlifyIdentity.on('login', function() {
-                        document.location.href = '/admin/';
-                    });
-                }
-            });
-        }
+        (function() {
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.on('init', function(user) {
+                    if (!user) {
+                        window.netlifyIdentity.on('login', function() {
+                            document.location.href = '/admin/';
+                        });
+                    }
+                });
+            }
 
-        var langBtn = document.getElementById('langBtn');
-        if (langBtn) {
-            langBtn.addEventListener('click', function() {
-                if (window.ViCoolCMS) {
-                    window.ViCoolCMS.toggleLang();
-                    var lang = window.ViCoolCMS.getLang();
-                    document.getElementById('currentLang').textContent = lang.toUpperCase();
-                }
-            });
-        }
+            var langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.addEventListener('click', function() {
+                    if (window.ViCoolCMS) {
+                        window.ViCoolCMS.toggleLang();
+                        var lang = window.ViCoolCMS.getLang();
+                        var currentLangEl = document.getElementById('currentLang');
+                        if (currentLangEl) currentLangEl.textContent = lang.toUpperCase();
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 </html>

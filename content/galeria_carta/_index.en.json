@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Jamon Croquettes",
+    "orden": 0,
+    "imagen": "/img/uploads/croquetas.jpg"
+  },
+  {
+    "title": "Patatas Bravas",
+    "orden": 1,
+    "imagen": "/img/uploads/patatas-bravas.jpg"
+  },
+  {
+    "title": "Grilled Iberico Pork",
+    "orden": 2,
+    "imagen": "/img/uploads/secreto-iberico.jpg"
+  },
+  {
+    "title": "Basque Cheesecake",
+    "orden": 3,
+    "imagen": "/img/uploads/tarta-queso.jpg"
+  },
+  {
+    "title": "Rioja Wine",
+    "orden": 4,
+    "imagen": "/img/uploads/vino-rioja.jpg"
+  },
+  {
+    "title": "Daily Menu",
+    "orden": 5,
+    "imagen": "/img/uploads/menu-dia.jpg"
+  }
+]

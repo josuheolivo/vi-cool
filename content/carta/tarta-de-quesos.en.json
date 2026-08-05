@@ -1,0 +1,10 @@
+{
+  "title": "Basque Cheesecake",
+  "precio": 6.00,
+  "descripcion": "La Vina style cheesecake, creamy inside and caramelized on top.",
+  "categoria": "postres",
+  "alergenos": ["gluten", "lactosa", "huevo"],
+  "foto": "/img/uploads/tarta-queso.jpg",
+  "destacado": false,
+  "agotado": false
+}

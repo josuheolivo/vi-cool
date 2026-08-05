@@ -1,0 +1,10 @@
+{
+  "title": "Rioja Reserva 2018",
+  "precio": 5.50,
+  "descripcion": "Glass of selected Rioja Reserva. Notes of vanilla, red berries and spices.",
+  "categoria": "vinos",
+  "alergenos": [],
+  "foto": "/img/uploads/vino-rioja.jpg",
+  "destacado": false,
+  "agotado": false
+}

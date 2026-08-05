@@ -1,0 +1,12 @@
+[
+  {
+    "title": "October Wine Tasting",
+    "orden": 0,
+    "imagen": "/img/uploads/cata-vinos.jpg"
+  },
+  {
+    "title": "New Year's Eve Dinner",
+    "orden": 1,
+    "imagen": "/img/uploads/nochevieja.jpg"
+  }
+]

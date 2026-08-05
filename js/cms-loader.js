@@ -111,7 +111,6 @@
 
     function loadHeroImagenes() {
         var file = CONFIG.contentBase + '/hero/_index.json';
-        var container = document.getElementById('hero-carousel') || document.querySelector('.hero__media');
 
         return fetchJSON(file)
             .then(function (imagenes) {
@@ -122,19 +121,8 @@
                 if (heroImg && imagenes[0].imagen) {
                     heroImg.src = imagenes[0].imagen;
                 }
-
-                var galeriaContainer = document.getElementById('galeria-hero');
-                if (!galeriaContainer) return;
-
-                var html = '';
-                imagenes.forEach(function (img) {
-                    html += '<div class="galeria__item galeria__item--sm reveal">';
-                    html += '<img src="' + escapeHTML(img.imagen) + '" alt="' + escapeHTML(img.title || '') + '" loading="lazy">';
-                    html += '</div>';
-                });
-                galeriaContainer.innerHTML = html;
             })
-            .catch(function (e) { console.warn('Hero imagenes no cargadas:', e.message); });
+            .catch(function () { });
     }
 
     /* ========================================

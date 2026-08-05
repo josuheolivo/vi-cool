@@ -97,16 +97,10 @@
     const header = document.getElementById('header');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
-    const langSelector = document.getElementById('langSelector');
-    const langBtn = document.getElementById('langBtn');
-    const langDropdown = document.getElementById('langDropdown');
-    const currentLangEl = document.getElementById('currentLang');
-    const langOptions = document.querySelectorAll('.lang-selector__option');
     const revealElements = document.querySelectorAll('.reveal');
     const menuTabs = document.querySelectorAll('.menus__tab');
     const menuPanels = document.querySelectorAll('.menus__panel');
     const reservasForm = document.getElementById('reservasForm');
-    const mobileActions = document.getElementById('mobileActions');
 
     /* ========================================
        STATE
@@ -117,12 +111,9 @@
        INITIALIZATION
        ======================================== */
     function init() {
-        applyLanguage(currentLang);
         initScrollHeader();
         initMobileMenu();
-        initLanguageSelector();
         initScrollReveal();
-        initMenuTabs();
         initForm();
         initSmoothScroll();
     }
@@ -196,56 +187,6 @@
         hamburger.setAttribute('aria-expanded', 'false');
         hamburger.setAttribute('aria-label', 'Abrir menú');
         document.body.style.overflow = '';
-    }
-
-    /* ========================================
-       LANGUAGE SELECTOR
-       ======================================== */
-    function initLanguageSelector() {
-        langBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            langSelector.classList.toggle('is-open');
-            const isOpen = langSelector.classList.contains('is-open');
-            langBtn.setAttribute('aria-expanded', isOpen.toString());
-        });
-
-        langOptions.forEach(function (option) {
-            option.addEventListener('click', function () {
-                const lang = option.getAttribute('data-lang');
-                currentLang = lang;
-                localStorage.setItem('vi-cool-lang', lang);
-                applyLanguage(lang);
-                langSelector.classList.remove('is-open');
-                langBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!langSelector.contains(e.target)) {
-                langSelector.classList.remove('is-open');
-                langBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
-
-    function applyLanguage(lang) {
-        const dict = translations[lang];
-        if (!dict) return;
-
-        document.documentElement.lang = lang;
-        currentLangEl.textContent = lang.toUpperCase();
-
-        document.querySelectorAll('[data-i18n]').forEach(function (el) {
-            const key = el.getAttribute('data-i18n');
-            if (dict[key]) {
-                el.textContent = dict[key];
-            }
-        });
-
-        langOptions.forEach(function (opt) {
-            const optLang = opt.getAttribute('data-lang');
-            opt.setAttribute('aria-selected', (optLang === lang).toString());
-        });
     }
 
     /* ========================================

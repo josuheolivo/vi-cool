@@ -24,9 +24,10 @@ collections:
   # 1. PÁGINA DE INICIO
   # -----------------------------------------
   - name: "inicio"
-    label: "🏠 Página de Inicio"
+    label: "Pagina de Inicio"
     label_singular: "Inicio"
-    description: "Edita la imagen principal, textos y datos de contacto de la página de inicio."
+    i18n: true
+    description: "Edita la imagen principal, textos y datos de contacto de la pagina de inicio."
     files:
       - name: "inicio"
         label: "Contenido de Inicio"
@@ -36,69 +37,69 @@ collections:
         editor:
           preview: true
         fields:
-          - label: "🖼️ Imagen Principal (Hero)"
+          - label: "Imagen Principal (Hero)"
             name: "hero_imagen"
             widget: "image"
             required: true
             i18n: true
             hint: "Foto grande de portada. Recomendado: 1920x1080px"
 
-          - label: "Título Principal"
+          - label: "Titulo Principal"
             name: "hero_titulo"
             widget: "string"
             required: true
             i18n: true
             default: "Tapas-Raciones de Temporada"
 
-          - label: "Subtítulo"
+          - label: "Subtitulo"
             name: "hero_subtitulo"
             widget: "string"
             required: true
             i18n: true
-            default: "Una experiencia culinaria inolvidable en el corazón de Madrid"
+            default: "Una experiencia culinaria inolvidable en el corazon de Madrid"
 
-          - label: "Texto del Botón"
+          - label: "Texto del Boton"
             name: "hero_cta"
             widget: "string"
             required: true
             i18n: true
             default: "Reserva tu mesa"
 
-          - label: "Título Filosofía"
+          - label: "Titulo Filosofia"
             name: "filosofia_titulo"
             widget: "string"
             required: true
             i18n: true
             default: "Respetando el producto de temporada"
 
-          - label: "Texto Filosofía"
+          - label: "Texto Filosofia"
             name: "filosofia_texto"
             widget: "text"
             required: true
             i18n: true
-            default: "Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras tapas-raciones para disfrutar de una experiencia culinaria inolvidable."
+            default: "Respetando el producto de temporada y trabajando con la maxima calidad, ofrecemos nuestras tapas-raciones para disfrutar de una experiencia culinaria inolvidable."
 
-          - label: "Dirección"
+          - label: "Direccion"
             name: "direccion"
             widget: "string"
             required: true
             i18n: true
             default: "VI COOL TAPAS BAR, C/ Huertas, 12, 28012 Madrid"
 
-          - label: "Teléfono (visual)"
+          - label: "Telefono (visual)"
             name: "telefono"
             widget: "string"
             required: true
             i18n: true
             default: "914 294 913"
 
-          - label: "Teléfono (link)"
+          - label: "Telefono (link)"
             name: "telefono_link"
             widget: "string"
             required: true
             i18n: true
             default: "+34914294913"
-            hint: "Solo números y +, sin espacios"
+            hint: "Solo numeros y +, sin espacios"
 
           - label: "Horario"
             name: "horario"
@@ -115,17 +116,129 @@ collections:
             default: "info@vicooltapasbar.es"
 
   # -----------------------------------------
-  # 2. CARTA
+  # 2. IMAGENES HERO / PORTADA
+  # -----------------------------------------
+  - name: "hero_imagenes"
+    label: "Imagenes Hero (Portada)"
+    label_singular: "Imagen Hero"
+    description: "Sube o elimina imagenes de portada. La primera imagen se mostrara como principal."
+    folder: "content/hero"
+    editor:
+      preview: true
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    i18n: true
+    fields:
+      - label: "Titulo"
+        name: "title"
+        widget: "string"
+        required: true
+        i18n: true
+        hint: "Descripcion corta. Ej: Vista del salon, Plato estrella..."
+
+      - label: "Imagen"
+        name: "imagen"
+        widget: "image"
+        required: true
+        i18n: true
+        hint: "Recomendado: 1920x1080px para portada"
+
+      - label: "Orden"
+        name: "orden"
+        widget: "number"
+        required: false
+        i18n: true
+        default: 0
+        hint: "Numero para ordenar (0 = primero)"
+
+  # -----------------------------------------
+  # 3. GALERIA CARTA Y MENUS
+  # -----------------------------------------
+  - name: "galeria_carta"
+    label: "Imagenes Carta y Menus"
+    label_singular: "Imagen Carta"
+    description: "Sube fotos de platos y menus para mostrar en la seccion Carta."
+    folder: "content/galeria_carta"
+    editor:
+      preview: true
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    i18n: true
+    fields:
+      - label: "Titulo"
+        name: "title"
+        widget: "string"
+        required: true
+        i18n: true
+        hint: "Ej: Croquetas de jamon, Menu del dia..."
+
+      - label: "Imagen"
+        name: "imagen"
+        widget: "image"
+        required: true
+        i18n: true
+        hint: "Foto del plato o menu. Recomendado: 800x600px"
+
+      - label: "Orden"
+        name: "orden"
+        widget: "number"
+        required: false
+        i18n: true
+        default: 0
+
+  # -----------------------------------------
+  # 4. GALERIA EVENTOS
+  # -----------------------------------------
+  - name: "galeria_eventos"
+    label: "Imagenes Eventos"
+    label_singular: "Imagen Evento"
+    description: "Sube fotos de eventos para mostrar en la seccion Eventos."
+    folder: "content/galeria_eventos"
+    editor:
+      preview: true
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    i18n: true
+    fields:
+      - label: "Titulo"
+        name: "title"
+        widget: "string"
+        required: true
+        i18n: true
+        hint: "Ej: Cata de vinos octubre, Nochevieja 2026..."
+
+      - label: "Imagen"
+        name: "imagen"
+        widget: "image"
+        required: true
+        i18n: true
+        hint: "Foto del evento. Recomendado: 1200x600px"
+
+      - label: "Orden"
+        name: "orden"
+        widget: "number"
+        required: false
+        i18n: true
+        default: 0
+
+  # -----------------------------------------
+  # 5. CARTA (PLATOS)
   # -----------------------------------------
   - name: "carta"
-    label: "🍽️ Carta del Restaurante"
+    label: "Carta del Restaurante"
     label_singular: "Plato"
-    description: "Añade, edita o elimina platos de la carta."
+    description: "Anade, edita o elimina platos de la carta."
     folder: "content/carta"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}} - {{precio}}€ ({{categoria}})"
+    summary: "{{title}} - {{precio}} ({{categoria}})"
     i18n: true
     sortable_fields: ["title", "precio", "categoria"]
     editor:
@@ -137,7 +250,7 @@ collections:
         required: true
         i18n: true
 
-      - label: "Precio (€)"
+      - label: "Precio"
         name: "precio"
         widget: "number"
         required: true
@@ -145,29 +258,29 @@ collections:
         value_type: "float"
         min: 0
         step: 0.5
-        hint: "Solo número. Ej: 8.5 para 8,50€"
+        hint: "Solo numero. Ej: 8.5 para 8,50"
 
-      - label: "Descripción"
+      - label: "Descripcion"
         name: "descripcion"
         widget: "text"
         required: true
         i18n: true
-        hint: "Breve descripción del plato o ingredientes"
+        hint: "Breve descripcion del plato o ingredientes"
 
-      - label: "Categoría"
+      - label: "Categoria"
         name: "categoria"
         widget: "select"
         required: true
         i18n: true
         options:
           - { label: "Tapas Raciones", value: "tapas-raciones" }
-          - { label: "Menú del Día", value: "menu-dia" }
+          - { label: "Menu del Dia", value: "menu-dia" }
           - { label: "Postres", value: "postres" }
           - { label: "Vinos", value: "vinos" }
           - { label: "Bebidas", value: "bebidas" }
         default: "tapas-raciones"
 
-      - label: "Alérgenos"
+      - label: "Alergenos"
         name: "alergenos"
         widget: "select"
         required: false
@@ -189,7 +302,7 @@ collections:
         i18n: true
         hint: "Recomendado: 600x400px"
 
-      - label: "⭐ Plato Destacado"
+      - label: "Plato Destacado"
         name: "destacado"
         widget: "boolean"
         required: false
@@ -197,7 +310,7 @@ collections:
         default: false
         hint: "Resalta este plato con etiqueta especial"
 
-      - label: "🚫 Agotado (ocultar)"
+      - label: "Agotado (ocultar)"
         name: "agotado"
         widget: "boolean"
         required: false
@@ -206,10 +319,10 @@ collections:
         hint: "Oculta temporalmente sin borrar"
 
   # -----------------------------------------
-  # 3. EVENTOS
+  # 6. EVENTOS
   # -----------------------------------------
   - name: "eventos"
-    label: "🎉 Eventos"
+    label: "Eventos"
     label_singular: "Evento"
     description: "Crea eventos especiales. Solo se muestran los futuros."
     folder: "content/eventos"
@@ -228,7 +341,7 @@ collections:
         required: true
         i18n: true
 
-      - label: "📅 Fecha y Hora"
+      - label: "Fecha y Hora"
         name: "fecha"
         widget: "datetime"
         required: true
@@ -237,49 +350,49 @@ collections:
         time_format: "HH:mm"
         format: "YYYY-MM-DDTHH:mm:ss"
 
-      - label: "📍 Lugar"
+      - label: "Lugar"
         name: "ubicacion"
         widget: "string"
         required: false
         i18n: true
         default: "Vi-Cool Tapas Bar, C/ Huertas 12"
 
-      - label: "📝 Descripción"
+      - label: "Descripcion"
         name: "descripcion"
         widget: "text"
         required: true
         i18n: true
 
-      - label: "📷 Imagen del Evento"
+      - label: "Imagen del Evento"
         name: "imagen"
         widget: "image"
         required: false
         i18n: true
         hint: "Recomendado: 800x500px"
 
-      - label: "🔗 Enlace de Reserva"
+      - label: "Enlace de Reserva"
         name: "enlace_reserva"
         widget: "string"
         required: false
         i18n: true
         hint: "URL para reservar plaza"
 
-      - label: "👥 Aforo"
+      - label: "Aforo"
         name: "aforo"
         widget: "number"
         required: false
         i18n: true
         value_type: "int"
         min: 1
-        hint: "Plazas máximas (opcional)"
+        hint: "Plazas maximas (opcional)"
 
   # -----------------------------------------
-  # 4. GALERÍA
+  # 7. GALERIA GENERAL
   # -----------------------------------------
   - name: "galeria"
-    label: "📸 Galería de Fotos"
+    label: "Galeria General"
     label_singular: "Foto"
-    description: "Sube fotos del local. Se muestran en la sección Galería."
+    description: "Sube fotos del local. Se muestran en la seccion Galeria."
     folder: "content/galeria"
     create: true
     delete: true
@@ -289,21 +402,21 @@ collections:
     editor:
       preview: true
     fields:
-      - label: "Título"
+      - label: "Titulo"
         name: "title"
         widget: "string"
         required: true
         i18n: true
         hint: "Ej: Vista del interior, Croquetas..."
 
-      - label: "📷 Fotografía"
+      - label: "Fotografia"
         name: "imagen"
         widget: "image"
         required: true
         i18n: true
-        hint: "Recomendado: 800x600px o más grande"
+        hint: "Recomendado: 800x600px o mas grande"
 
-      - label: "Categoría"
+      - label: "Categoria"
         name: "categoria"
         widget: "select"
         required: false
