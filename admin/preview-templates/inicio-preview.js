@@ -1,133 +1,25 @@
-/**
- * Preview Template para Página de Inicio
- * Muestra un resumen del contenido editable
- */
-var InicioPreview = createClass({
-    render: function() {
-        var entry = this.props.entry;
-        var data = entry.getIn(['data']);
-        var heroTitle = data.get('hero_titulo') || 'Sin título';
-        var heroSubtitle = data.get('hero_subtitulo') || '';
-        var filosofiaTitle = data.get('filosofia_titulo') || '';
-        var telefono = data.get('telefono') || '';
+CMS.registerPreviewTemplate('inicio', function(entry) {
+    var data = entry.getData();
+    var titulo = data.hero_titulo || 'Sin título';
+    var subtitulo = data.hero_subtitulo || '';
+    var cta = data.hero_cta || 'Reserva tu mesa';
+    var filoTitulo = data.filosofia_titulo || '';
+    var telefono = data.telefono || '';
 
-        return h('div', {
-            style: {
-                fontFamily: "'Karla', system-ui, sans-serif",
-                maxWidth: '520px',
-                margin: '0 auto',
-                padding: '1.5rem'
-            }
-        }, [
-            // Hero Preview
-            h('div', {
-                style: {
-                    background: 'linear-gradient(135deg, #8B1A1A 0%, #6B1010 100%)',
-                    borderRadius: '12px',
-                    padding: '2rem',
-                    marginBottom: '1rem',
-                    textAlign: 'center'
-                }
-            }, [
-                h('div', {
-                    style: {
-                        fontFamily: "'Playfair Display SC', Georgia, serif",
-                        fontSize: '1.5rem',
-                        fontWeight: '700',
-                        color: '#fff',
-                        letterSpacing: '0.08em',
-                        marginBottom: '0.75rem'
-                    }
-                }, 'VI COOL'),
-                h('h2', {
-                    style: {
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: '1.125rem',
-                        fontWeight: '400',
-                        color: '#fff',
-                        margin: '0 0 0.5rem'
-                    }
-                }, heroTitle),
-                heroSubtitle ? h('p', {
-                    style: {
-                        fontSize: '0.875rem',
-                        color: 'rgba(255,255,255,0.8)',
-                        margin: '0 0 1rem'
-                    }
-                }, heroSubtitle) : null,
-                h('span', {
-                    style: {
-                        display: 'inline-block',
-                        background: '#fff',
-                        color: '#8B1A1A',
-                        fontSize: '0.8125rem',
-                        fontWeight: '600',
-                        padding: '0.5rem 1rem',
-                        borderRadius: '8px'
-                    }
-                }, data.get('hero_cta') || 'Reserva tu mesa')
-            ]),
-
-            // Filosofía Preview
-            filosofiaTitle ? h('div', {
-                style: {
-                    background: '#f8f7f4',
-                    borderRadius: '12px',
-                    padding: '1.5rem',
-                    marginBottom: '1rem'
-                }
-            }, [
-                h('span', {
-                    style: {
-                        fontSize: '0.6875rem',
-                        fontWeight: '600',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.12em',
-                        color: '#8B1A1A'
-                    }
-                }, 'Nuestra Filosofía'),
-                h('h3', {
-                    style: {
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: '1rem',
-                        fontWeight: '500',
-                        color: '#1f1f1f',
-                        margin: '0.25rem 0 0'
-                    }
-                }, filosofiaTitle)
-            ]) : null,
-
-            // Contacto Preview
-            h('div', {
-                style: {
-                    background: '#fff',
-                    border: '1px solid #e5e5e5',
-                    borderRadius: '12px',
-                    padding: '1.5rem'
-                }
-            }, [
-                h('span', {
-                    style: {
-                        fontSize: '0.6875rem',
-                        fontWeight: '600',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.12em',
-                        color: '#8B1A1A'
-                    }
-                }, 'Contacto'),
-                h('p', {
-                    style: {
-                        fontSize: '0.875rem',
-                        color: '#5C5C5C',
-                        margin: '0.5rem 0 0',
-                        lineHeight: '1.5'
-                    }
-                }, [
-                    telefono ? h('span', {}, '📞 ' + telefono) : null
-                ])
-            ])
-        ]);
-    }
+    return '<div style="font-family:Karla,system-ui,sans-serif;max-width:520px;margin:0 auto;padding:1.5rem;">' +
+        '<div style="background:linear-gradient(135deg,#8B1A1A 0%,#6B1010 100%);border-radius:12px;padding:2rem;margin-bottom:1rem;text-align:center;">' +
+            '<div style="font-family:Playfair Display SC,Georgia,serif;font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:0.08em;margin-bottom:0.75rem;">VI COOL</div>' +
+            '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:1.125rem;font-weight:400;color:#fff;margin:0 0 0.5rem;">' + titulo + '</h2>' +
+            (subtitulo ? '<p style="font-size:0.875rem;color:rgba(255,255,255,0.8);margin:0 0 1rem;">' + subtitulo + '</p>' : '') +
+            '<span style="display:inline-block;background:#fff;color:#8B1A1A;font-size:0.8125rem;font-weight:600;padding:0.5rem 1rem;border-radius:8px;">' + cta + '</span>' +
+        '</div>' +
+        (filoTitulo ? '<div style="background:#f8f7f4;border-radius:12px;padding:1.5rem;margin-bottom:1rem;">' +
+            '<span style="font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:#8B1A1A;">Nuestra Filosofía</span>' +
+            '<h3 style="font-family:Playfair Display,Georgia,serif;font-size:1rem;font-weight:500;color:#1f1f1f;margin:0.25rem 0 0;">' + filoTitulo + '</h3>' +
+        '</div>' : '') +
+        '<div style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:1.5rem;">' +
+            '<span style="font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:#8B1A1A;">Contacto</span>' +
+            (telefono ? '<p style="font-size:0.875rem;color:#5C5C5C;margin:0.5rem 0 0;line-height:1.5;">📞 ' + telefono + '</p>' : '') +
+        '</div>' +
+    '</div>';
 });
-
-CMS.registerPreviewTemplate('inicio', InicioPreview);

@@ -1,26 +1,14 @@
 # =============================================
-# DECAP CMS - CONFIGURACIÓN VI COOL TAPAS BAR
+# DECAP CMS - VI COOL TAPAS BAR
 # =============================================
-# Panel de administración optimizado para usuarios no técnicos
 
 backend:
   name: git-gateway
   branch: main
-  commit_messages:
-    create: "Nuevo: “{{slug}}”"
-    update: "Actualizado: “{{slug}}”"
-    delete: "Eliminado: “{{slug}}”"
-    uploadMedia: "Imagen subida: “{{path}}”"
-    deleteMedia: "Imagen eliminada: “{{path}}”"
 
 local_backend: true
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
-
-logo_url: "/img/uploads/logo-vicool.png"
-
-site_url: "https://vicooltapasbar.es"
-display_url: "https://vicooltapasbar.es"
 
 i18n:
   structure: multiple_files
@@ -33,12 +21,12 @@ i18n:
 collections:
 
   # -----------------------------------------
-  # 1. PÁGINA DE INICIO (archivo único)
+  # 1. PÁGINA DE INICIO
   # -----------------------------------------
   - name: "inicio"
     label: "🏠 Página de Inicio"
-    label_singular: "Página de Inicio"
-    description: "Edita el contenido visible en la página principal: imagen principal, textos y datos de contacto."
+    label_singular: "Inicio"
+    description: "Edita la imagen principal, textos y datos de contacto de la página de inicio."
     files:
       - name: "inicio"
         label: "Contenido de Inicio"
@@ -48,17 +36,12 @@ collections:
         editor:
           preview: true
         fields:
-          # --- SECCIÓN HERO ---
           - label: "🖼️ Imagen Principal (Hero)"
             name: "hero_imagen"
             widget: "image"
             required: true
             i18n: true
-            hint: "📐 Tamaño recomendado: 1920x1080px. Esta es la foto grande que se ve al entrar en la web."
-            media_library:
-              config:
-                max_file_size: 3145728
-                multiple: false
+            hint: "Foto grande de portada. Recomendado: 1920x1080px"
 
           - label: "Título Principal"
             name: "hero_titulo"
@@ -66,7 +49,6 @@ collections:
             required: true
             i18n: true
             default: "Tapas-Raciones de Temporada"
-            hint: "Texto grande sobre la imagen principal"
 
           - label: "Subtítulo"
             name: "hero_subtitulo"
@@ -74,7 +56,6 @@ collections:
             required: true
             i18n: true
             default: "Una experiencia culinaria inolvidable en el corazón de Madrid"
-            hint: "Frase corta debajo del título"
 
           - label: "Texto del Botón"
             name: "hero_cta"
@@ -82,50 +63,42 @@ collections:
             required: true
             i18n: true
             default: "Reserva tu mesa"
-            hint: "Texto que aparece en el botón principal"
 
-          # --- SECCIÓN FILOSOFÍA ---
-          - label: "Nuestra Filosofía"
+          - label: "Título Filosofía"
             name: "filosofia_titulo"
             widget: "string"
             required: true
             i18n: true
             default: "Respetando el producto de temporada"
-            hint: "Título de la sección 'Nuestra Filosofía'"
 
-          - label: "Texto de Filosofía"
+          - label: "Texto Filosofía"
             name: "filosofia_texto"
-            widget: "markdown"
+            widget: "text"
             required: true
             i18n: true
-            default: "Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras \"tapas-raciones\" para disfrutar de una experiencia culinaria inolvidable. Hemos renovado nuestro concepto original ampliando nuestra carta para que puedan disfrutar desde el menú del día a un menú elaborado con una selección de nuestros platos más consolidados."
-            hint: "Texto largo que describe la filosofía del restaurante. Puedes usar **negritas** y saltos de línea."
-            editor_components: ["heading-two"]
+            default: "Respetando el producto de temporada y trabajando con la máxima calidad, ofrecemos nuestras tapas-raciones para disfrutar de una experiencia culinaria inolvidable."
 
-          # --- SECCIÓN CONTACTO ---
           - label: "Dirección"
             name: "direccion"
             widget: "string"
             required: true
             i18n: true
             default: "VI COOL TAPAS BAR, C/ Huertas, 12, 28012 Madrid"
-            hint: "Dirección completa del restaurante"
 
-          - label: "Teléfono (como se ve)"
+          - label: "Teléfono (visual)"
             name: "telefono"
             widget: "string"
             required: true
             i18n: true
             default: "914 294 913"
-            hint: "Número de teléfono para mostrar en la web"
 
-          - label: "Teléfono (para llamar)"
+          - label: "Teléfono (link)"
             name: "telefono_link"
             widget: "string"
             required: true
             i18n: true
             default: "+34914294913"
-            hint: "Solo números y el signo +. Ejemplo: +34914294913"
+            hint: "Solo números y +, sin espacios"
 
           - label: "Horario"
             name: "horario"
@@ -133,28 +106,26 @@ collections:
             required: true
             i18n: true
             default: "Lun - Dom: 13:00 - 16:00 / 20:00 - 23:30"
-            hint: "Horario de apertura del restaurante"
 
-          - label: "Email de Contacto"
+          - label: "Email"
             name: "email"
             widget: "string"
             required: true
             i18n: true
             default: "info@vicooltapasbar.es"
-            hint: "Email donde recibirás consultas"
 
   # -----------------------------------------
-  # 2. CARTA DEL RESTAURANTE (colección)
+  # 2. CARTA
   # -----------------------------------------
   - name: "carta"
     label: "🍽️ Carta del Restaurante"
     label_singular: "Plato"
-    description: "Añade, edita o elimina platos de la carta. Cada plato debe tener nombre, precio, descripción y categoría."
+    description: "Añade, edita o elimina platos de la carta."
     folder: "content/carta"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}} — {{precio}}€ ({{categoria}})"
+    summary: "{{title}} - {{precio}}€ ({{categoria}})"
     i18n: true
     sortable_fields: ["title", "precio", "categoria"]
     editor:
@@ -165,9 +136,8 @@ collections:
         widget: "string"
         required: true
         i18n: true
-        hint: "Ejemplo: Croquetas de Jamón, Patatas Bravas..."
 
-      - label: "Precio (en euros)"
+      - label: "Precio (€)"
         name: "precio"
         widget: "number"
         required: true
@@ -175,15 +145,14 @@ collections:
         value_type: "float"
         min: 0
         step: 0.5
-        hint: "Solo el número. Ejemplo: 8.5 (para 8,50€)"
+        hint: "Solo número. Ej: 8.5 para 8,50€"
 
-      - label: "Descripción / Ingredientes"
+      - label: "Descripción"
         name: "descripcion"
-        widget: "markdown"
+        widget: "text"
         required: true
         i18n: true
-        hint: "Describe el plato brevemente. Puedes incluir ingredientes principales."
-        minimal: true
+        hint: "Breve descripción del plato o ingredientes"
 
       - label: "Categoría"
         name: "categoria"
@@ -191,40 +160,34 @@ collections:
         required: true
         i18n: true
         options:
-          - { label: "🥘 Tapas Raciones", value: "tapas-raciones" }
-          - { label: "📋 Menú del Día", value: "menu-dia" }
-          - { label: "🍰 Postres", value: "postres" }
-          - { label: "🍷 Vinos", value: "vinos" }
-          - { label: "🥤 Bebidas", value: "bebidas" }
+          - { label: "Tapas Raciones", value: "tapas-raciones" }
+          - { label: "Menú del Día", value: "menu-dia" }
+          - { label: "Postres", value: "postres" }
+          - { label: "Vinos", value: "vinos" }
+          - { label: "Bebidas", value: "bebidas" }
         default: "tapas-raciones"
-        hint: "Elige la sección donde aparecerá este plato"
 
-      - label: "⚠️ Alérgenos"
+      - label: "Alérgenos"
         name: "alergenos"
         widget: "select"
         required: false
         i18n: true
         multiple: true
         options:
-          - { label: "🌾 Gluten", value: "gluten" }
-          - { label: "🥛 Lactosa", value: "lactosa" }
-          - { label: "🥚 Huevo", value: "huevo" }
-          - { label: "🥜 Frutos Secos", value: "frutos-secos" }
-          - { label: "🦐 Marisco", value: "marisco" }
-          - { label: "🐟 Pescado", value: "pescado" }
-          - { label: "🫘 Soja", value: "soja" }
-        hint: "Mantén pulsado Ctrl (o Cmd en Mac) para seleccionar varios"
+          - { label: "Gluten", value: "gluten" }
+          - { label: "Lactosa", value: "lactosa" }
+          - { label: "Huevo", value: "huevo" }
+          - { label: "Frutos Secos", value: "frutos-secos" }
+          - { label: "Marisco", value: "marisco" }
+          - { label: "Pescado", value: "pescado" }
+          - { label: "Soja", value: "soja" }
 
-      - label: "📷 Foto del Plato"
+      - label: "Foto del Plato"
         name: "foto"
         widget: "image"
         required: false
         i18n: true
-        hint: "Sube una foto bonita del plato. Tamaño recomendado: 600x400px"
-        media_library:
-          config:
-            max_file_size: 2097152
-            multiple: false
+        hint: "Recomendado: 600x400px"
 
       - label: "⭐ Plato Destacado"
         name: "destacado"
@@ -232,28 +195,28 @@ collections:
         required: false
         i18n: true
         default: false
-        hint: "Activa esta opción para que el plato aparezca resaltado con una etiqueta especial"
+        hint: "Resalta este plato con etiqueta especial"
 
-      - label: "🚫 Agotado (ocultar temporalmente)"
+      - label: "🚫 Agotado (ocultar)"
         name: "agotado"
         widget: "boolean"
         required: false
         i18n: true
         default: false
-        hint: "Activa esta opción si el plato no está disponible temporalmente. No se borrará, solo se ocultará"
+        hint: "Oculta temporalmente sin borrar"
 
   # -----------------------------------------
-  # 3. EVENTOS (colección)
+  # 3. EVENTOS
   # -----------------------------------------
   - name: "eventos"
     label: "🎉 Eventos"
     label_singular: "Evento"
-    description: "Crea eventos especiales: catas, cenas temáticas, talleres... Solo se mostrarán los eventos con fecha futura."
+    description: "Crea eventos especiales. Solo se muestran los futuros."
     folder: "content/eventos"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}} — {{fecha}}"
+    summary: "{{title}} ({{fecha}})"
     i18n: true
     sortable_fields: ["title", "fecha"]
     editor:
@@ -264,7 +227,6 @@ collections:
         widget: "string"
         required: true
         i18n: true
-        hint: "Ejemplo: Cata de Vinos de la Rioja, Cena de Nochevieja..."
 
       - label: "📅 Fecha y Hora"
         name: "fecha"
@@ -274,7 +236,6 @@ collections:
         date_format: "DD/MM/YYYY"
         time_format: "HH:mm"
         format: "YYYY-MM-DDTHH:mm:ss"
-        hint: "Selecciona la fecha y hora del evento"
 
       - label: "📍 Lugar"
         name: "ubicacion"
@@ -282,86 +243,73 @@ collections:
         required: false
         i18n: true
         default: "Vi-Cool Tapas Bar, C/ Huertas 12"
-        hint: "Dónde se celebrará el evento"
 
       - label: "📝 Descripción"
         name: "descripcion"
-        widget: "markdown"
+        widget: "text"
         required: true
         i18n: true
-        hint: "Cuenta en qué consiste el evento, qué incluye, a quién va dirigido..."
-        editor_components: ["heading-two", "bold", "italic", "bulleted-list"]
 
       - label: "📷 Imagen del Evento"
         name: "imagen"
         widget: "image"
         required: false
         i18n: true
-        hint: "Cartel promocional o foto representativa. Tamaño: 800x500px recomendado"
-        media_library:
-          config:
-            max_file_size: 3145728
-            multiple: false
+        hint: "Recomendado: 800x500px"
 
       - label: "🔗 Enlace de Reserva"
         name: "enlace_reserva"
         widget: "string"
         required: false
         i18n: true
-        hint: "URL donde los clientes pueden reservar (ej: enlace a TheFork, CoverManager...)"
+        hint: "URL para reservar plaza"
 
-      - label: "👥 Aforo máximo"
+      - label: "👥 Aforo"
         name: "aforo"
         widget: "number"
         required: false
         i18n: true
         value_type: "int"
         min: 1
-        hint: "Número máximo de plazas disponibles (opcional)"
+        hint: "Plazas máximas (opcional)"
 
   # -----------------------------------------
-  # 4. GALERÍA DE FOTOS (colección)
+  # 4. GALERÍA
   # -----------------------------------------
   - name: "galeria"
     label: "📸 Galería de Fotos"
     label_singular: "Foto"
-    description: "Sube fotos del local, de los platos o de eventos. Las fotos se mostrarán automáticamente en la sección Galería de la web."
+    description: "Sube fotos del local. Se muestran en la sección Galería."
     folder: "content/galeria"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}} ({{categoria}})"
+    summary: "{{title}}"
     i18n: true
-    sortable_fields: ["title"]
     editor:
       preview: true
     fields:
-      - label: "Título / Descripción"
+      - label: "Título"
         name: "title"
         widget: "string"
         required: true
         i18n: true
-        hint: "Nombre descriptivo. Ejemplo: 'Vista del interior', 'Croquetas recién hechas'..."
+        hint: "Ej: Vista del interior, Croquetas..."
 
       - label: "📷 Fotografía"
         name: "imagen"
         widget: "image"
         required: true
         i18n: true
-        hint: "Sube una foto en buena calidad. Tamaño recomendado: 800x600px o más grande"
-        media_library:
-          config:
-            max_file_size: 5242880
-            multiple: true
+        hint: "Recomendado: 800x600px o más grande"
 
-      - label: "📂 Categoría de Foto"
+      - label: "Categoría"
         name: "categoria"
         widget: "select"
         required: false
         i18n: true
         options:
-          - { label: "🏢 El Local", value: "local" }
-          - { label: "🍽️ Platos", value: "platos" }
-          - { label: "🎉 Eventos", value: "eventos" }
+          - { label: "El Local", value: "local" }
+          - { label: "Platos", value: "platos" }
+          - { label: "Eventos", value: "eventos" }
         default: "local"
-        hint: "Esto ayuda a organizar las fotos internamente"

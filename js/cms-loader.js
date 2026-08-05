@@ -177,7 +177,7 @@
             telefono.textContent = data.telefono;
         }
         if ( data.telefono_link ) {
-            var telLink = document.querySelector( '[data-contact="telefono-link"]' );
+            var telLink = document.querySelector( 'a[href^="tel:"]' );
             if ( telLink ) {
                 telLink.href = 'tel:' + data.telefono_link;
             }
